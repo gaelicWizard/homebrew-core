@@ -22,10 +22,10 @@ class GnustepMake < Formula
     system "./configure", *std_configure_args,
                           "--with-config-file=#{prefix}/etc/GNUstep.conf",
                           "--enable-native-objc-exceptions"
-    system "make", "install", "tooldir=#{libexec}"
+    system "make", "install", "tooldir=#{bin}"
   end
 
   test do
-    assert_match shell_output("#{libexec}/gnustep-config --variable=CC").chomp, ENV.cc
+    assert_match shell_output("#{bin}/gnustep-config --variable=CC").chomp, ENV.cc
   end
 end
